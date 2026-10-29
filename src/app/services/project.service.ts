@@ -10,7 +10,7 @@ export class ProjectService {
         id: 1,
         title:        "CloudJump",
         description:  "CloudJump is a web game inspired from Google Chrome's offline dinosaur game.",
-        images:       ["/images/dinoCool.png"],
+        images:       ["/images/DinoCool.png"],
         technologies: ["HTML5","CSS3","JS","PIXEL ART"],
         element:      "fire",
         github:       "https://github.com/chihebbhy/ChihebBenHadjYahia_DinoCool",
