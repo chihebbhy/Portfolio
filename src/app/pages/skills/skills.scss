@@ -1,0 +1,33 @@
+@use 'styles/variables' as *;
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-bottom: 2.5rem;
+
+  button {
+    padding: 0.5rem 1.2rem;
+    font-family: $font-body;
+    color: $text;
+    background: transparent;
+    border: 1px solid $muted;
+    border-radius: 999px; // pill shape
+    cursor: pointer;
+    transition: background $transition, color $transition;
+
+    &:hover,
+    &.active {
+      background: $text;
+      color: $bg;
+    }
+  }
+}
+
+// Cards are at least 120px wide, as many per row as fit
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 1.2rem;
+}

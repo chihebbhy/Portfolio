@@ -1,0 +1,27 @@
+// ===== Element colors =====
+$fire:  #d64933;
+$water: #2e86ab;
+$earth: #6b8f3a;
+$air:   #e8a33d;
+
+// A map lets us loop over the four elements with @each
+$elements: (
+  fire: $fire,
+  water: $water,
+  earth: $earth,
+  air: $air
+);
+
+// ===== Base colors =====
+$bg:       #1b1a17;
+$bg-light: #26241f; // nav, cards
+$text:     #f3ead8;
+$muted:    #a89f8c; // secondary text
+
+// ===== Fonts (loaded in index.html) =====
+$font-title: 'Cinzel', serif;
+$font-body:  'Lato', sans-serif;
+
+// ===== Misc =====
+$radius: 8px;
+$transition: 0.3s ease;

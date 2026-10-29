@@ -1,0 +1,20 @@
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
+footer {
+  text-align: center;
+  color: $muted;
+  font-size: 0.9rem;
+  background: $bg-light;
+
+  &::before {
+    content: '';
+    display: block;
+    @include element-line;
+  }
+
+  p {
+    margin: 0;
+    padding: 1.5rem;
+  }
+}

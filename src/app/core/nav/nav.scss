@@ -1,0 +1,69 @@
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
+nav {
+  position: sticky; // stays at the top when scrolling
+  top: 0;
+  z-index: 10;
+  background: rgba($bg-light, 0.9);
+  backdrop-filter: blur(6px);
+
+  // colored line under the nav
+  &::after {
+    content: '';
+    display: block;
+    @include element-line;
+  }
+
+  ul {
+    @include flex-center;
+    gap: 3rem;
+    margin: 0;
+    padding: 1.2rem;
+    list-style: none;
+  }
+
+  a {
+    position: relative;
+    font-family: $font-title;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color $transition;
+
+    // underline that grows from the center on hover
+    &::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: currentColor;
+      transition: width $transition, left $transition;
+    }
+
+    &:hover::after,
+    &.active::after { // .active is added by routerLinkActive="active" in nav.html
+      width: 100%;
+      left: 0;
+    }
+  }
+
+  // Home keeps the text color, then each link gets one element: About = fire, Skills = water...
+  $i: 2; // start at the 2nd link (skip Home)
+  @each $name, $color in $elements {
+    li:nth-child(#{$i}) a:hover,
+    li:nth-child(#{$i}) a.active {
+      color: $color;
+    }
+    $i: $i + 1;
+  }
+}
+
+// On small screens, smaller gap so the links fit
+@media (max-width: 600px) {
+  nav ul {
+    gap: 1.2rem;
+    font-size: 0.8rem;
+  }
+}

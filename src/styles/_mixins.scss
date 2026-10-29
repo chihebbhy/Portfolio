@@ -1,0 +1,19 @@
+@use 'variables' as *;
+
+// Center children horizontally and vertically
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Soft colored light around an element (like bending energy)
+@mixin glow($color) {
+  box-shadow: 0 0 12px rgba($color, 0.6);
+}
+
+// A thin line with the four element colors
+@mixin element-line {
+  height: 3px;
+  background: linear-gradient(to right, $fire, $air, $earth, $water);
+}

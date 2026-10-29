@@ -1,0 +1,97 @@
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
+:host {
+  display: block; // so the card fills its grid cell
+}
+
+.project-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; // keeps the image inside the rounded corners
+  text-align: left;
+  background: $bg-light;
+  border: 1px solid transparent;
+  border-top: 3px solid; // the color comes from the loop below
+  border-radius: $radius;
+  transition: transform $transition, box-shadow $transition;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+.image-container {
+  aspect-ratio: 16 / 9;
+  background: $bg; // shown while there is no image
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; // fills the box without stretching
+  }
+}
+
+.content {
+  flex: 1; // takes the remaining height, so the links stay at the bottom
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 1.2rem;
+
+  h2 {
+    margin: 0;
+    font-size: 1.3rem;
+  }
+
+  p {
+    margin: 0;
+    color: $muted;
+  }
+}
+
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+
+  span {
+    padding: 0.2rem 0.7rem;
+    font-size: 0.8rem;
+    border: 1px solid rgba($text, 0.25);
+    border-radius: 999px;
+  }
+}
+
+.links {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: auto; // push to the bottom of the card
+
+  a {
+    font-family: $font-title;
+    font-weight: 700;
+    letter-spacing: 1px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+// One class per element: .element-fire, .element-water...
+@each $name, $color in $elements {
+  .element-#{$name} {
+    border-top-color: $color;
+
+    .links a {
+      color: $color;
+    }
+
+    &:hover {
+      border-color: $color;
+      @include glow($color);
+    }
+  }
+}

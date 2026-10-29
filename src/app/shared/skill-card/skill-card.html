@@ -1,0 +1,5 @@
+<!-- [ngClass] adds "element-fire", "element-water"... depending on the skill -->
+<div class="skill-card" [ngClass]="'element-' + skill.element">
+    <img [src]="skill.icon" [alt]="skill.name" />
+    <span>{{ skill.name }}</span>
+</div>

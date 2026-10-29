@@ -1,0 +1,39 @@
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+
+.skill-card {
+  @include flex-center;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.2rem 0.5rem;
+  background: $bg-light;
+  border: 1px solid transparent;
+  border-bottom: 3px solid; // the color comes from the loop below
+  border-radius: $radius;
+  transition: transform $transition, box-shadow $transition;
+
+  img {
+    width: 48px;
+    height: 48px;
+  }
+
+  span {
+    font-size: 0.9rem;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
+// One class per element: .element-fire, .element-water...
+@each $name, $color in $elements {
+  .element-#{$name} {
+    border-bottom-color: $color;
+
+    &:hover {
+      border-color: $color;
+      @include glow($color);
+    }
+  }
+}

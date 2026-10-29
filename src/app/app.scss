@@ -1,0 +1,16 @@
+// Page layout: nav at the top, footer always at the bottom
+main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+app-cv {
+  display: block;
+  margin: 3rem auto;
+}
+
+// margin-top: auto pushes the footer down even when the page is short
+app-footer {
+  margin-top: auto;
+}

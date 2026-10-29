@@ -1,0 +1,17 @@
+<section>
+    <h1>Skills</h1>
+
+    <div class="filters">
+        @for (f of filters; track f.value) {
+            <button [class.active]="selected === f.value" (click)="select(f.value)">
+                {{ f.label }}
+            </button>
+        }
+    </div>
+
+    <div class="grid">
+        @for (s of filteredSkills; track s.name) {
+            <app-skill-card [skill]="s" />
+        }
+    </div>
+</section>
